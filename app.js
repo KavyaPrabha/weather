@@ -12,7 +12,7 @@ app.listen(process.env.PORT || 4000, function(){
 
 
   app.get('/',function (req,res){
-    res.render("frontpage",{result:""});
+    res.render("intro");
     
 });
 
