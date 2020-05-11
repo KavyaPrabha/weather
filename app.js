@@ -22,7 +22,13 @@ app.listen(process.env.PORT || 4000, function(){
     var url = "http://api.openweathermap.org/data/2.5/weather?q="+country+"&appid=0cc0163e251512a13d3a1e6a081d298b" 
     request(url, function(err,res1,result)
     {
-      res.render("frontpage",{result:result})
+      result=JSON.parse(result);
+      console.log(result.main.temp)
+      var temp=result.main.temp;
+      var desc=result.weather[0].description;
+      var mintemp=result.main.temp_min;
+      var maxtemp=result.main.temp_max;
+      res.render("frontpage",{result:temp,city:country,desc:desc,mintemp:mintemp,maxtemp:maxtemp})
     })
   });
 
